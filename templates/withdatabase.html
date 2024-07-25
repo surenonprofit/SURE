@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="S.U.R.E - Serving Under Resourced Education, empowering minority students with AI tutoring, educational resources, and networking opportunities.">
+  <meta name="keywords" content="S.U.R.E, education, minority students, AI tutoring, networking, NYC, college readiness">
+  <title>S.U.R.E - Information Database</title>
+  <link rel="stylesheet" href="/static/styles/style.css">
+  <script src="/static/scripts/script.js"></script>
+</head>
+<body>
+  <header>
+    <img src="/static/images/SURE.png" alt="S.U.R.E Logo">
+  </header>
+  
+  <nav>
+    <a href="/" title="Learn about SURE">Homepage</a>
+    <a href="/api/resources_page" title="Explore our resources">Information Database</a>
+    <a href="/involve" title="Find out how to get involved">Get Involved</a>
+    <button onclick="openChat()" title="Chat with us!">Sure-Bot</button>
+  </nav>
+
+  <div class="search-bar-container">
+    <div class="search-bar">
+      <input type="text" id="searchInput" placeholder="Search...">
+      <button onclick="searchResources()">Search</button>
+    </div>
+  </div>
+  
+  <main>
+    <section id="resources-list">
+      <!-- Resources will be dynamically loaded here -->
+    </section>
+  </main>
+  
+  <footer>
+    <p>&copy; 2024 S.U.R.E. All rights reserved.</p>
+  </footer>
+
+  <!-- Chat Modal -->
+  <div id="chatModal" class="chat-modal">
+    <div class="chat-modal-header">
+      <span>Chat with Us</span>
+      <button class="close-chat" onclick="closeChat()">X</button>
+    </div>
+    <div class="chat-modal-body"></div>
+    <div class="chat-modal-footer">
+      <input type="text" id="chatInput" class="chat-input" placeholder="Type your message...">
+      <button id="send-button" class="send-button" onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      fetch('/api/resources')
+        .then(response => response.json())
+        .then(data => {
+          const resourcesList = document.getElementById('resources-list');
+          resourcesList.innerHTML = data.map(resource => `
+            <h3>${resource.name}</h3>
+            <ul>
+              <li><strong>Description:</strong> ${resource.desc}</li>
+              <li><strong>Eligibility:</strong> ${resource.elig}</li>
+              <li><strong>Application Deadline & Process:</strong> ${resource.app_deadline_process}</li>
+              <li><strong>Contact Information:</strong> ${resource.contact}</li>
+              <li><strong>Website:</strong> <a href="${resource.website}" target="_blank">${resource.website}</a></li>
+            </ul>
+          `).join('');
+        });
+    });
+
+    function searchResources() {
+      const query = document.getElementById('searchInput').value.toLowerCase();
+      const items = document.querySelectorAll('#resources-list h3');
+      items.forEach(item => {
+        const text = item.textContent.toLowerCase();
+        item.parentElement.style.display = text.includes(query) ? 'block' : 'none';
+      });
+    }
+  </script>
+</body>
+</html>

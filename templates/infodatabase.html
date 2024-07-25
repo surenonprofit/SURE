@@ -1,0 +1,2295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="S.U.R.E - Serving Under Resourced Education, empowering minority students with AI tutoring, educational resources, and networking opportunities.">
+  <meta name="keywords" content="S.U.R.E, education, minority students, AI tutoring, networking, NYC, college readiness">
+  <title>S.U.R.E - Serving Under Resourced Education</title>
+  <style>
+    body {
+      background-color: #bdc2c1; /* Grey */
+      color: #000000; /* Black text */
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #e7e4df; /* Off White */
+      color: #ffffff; /* White text */
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    header img {
+      max-width: 500px; /* Adjust the max-width as needed */
+      height: auto;
+    }
+
+    .search-bar-container {
+      position: relative;
+      background-color: #bdc2c1; /* Grey background */
+      padding: 10px;
+      margin-top: 20px;
+    }
+
+    .search-bar {
+      position: absolute;
+      top: 50%; /* Center vertically */
+      right: 20px; /* Align with container padding */
+      transform: translateY(-50%); /* Center vertically */
+      display: flex;
+      align-items: center;
+    }
+
+    .search-bar input {
+      padding: 5px;
+      border: 1px solid #c8bfaf; /* Off White */
+      border-radius: 5px;
+      font-size: 16px;
+    }
+
+    .search-bar button {
+      background-color: #000000; /* Black */
+      color: #ffffff; /* White text */
+      border: none;
+      padding: 5px 10px;
+      margin-left: 5px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    .search-bar button:hover {
+      background-color: #53acbd; /* Light Blue */
+    }
+
+    nav {
+      background-color: #ffffff; /* White background */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 10px 0;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    nav a, nav button {
+      color: #000000; /* Black */
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+      font-size: 16px; /* Ensures same font size for buttons and links */
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    nav a:hover, nav button:hover {
+      color: #53acbd; /* Light Blue */
+    }
+
+    main {
+      padding: 20px;
+    }
+
+    section {
+      margin-bottom: 5px;
+    }
+
+    h2 {
+      border-bottom: 2px solid #000000; /* Black */
+      padding-bottom: 10px;
+    }
+
+    footer {
+      background-color: #eae4dc; /* Off White */
+      color: #000000; /* White text */
+      text-align: center;
+      padding: 10px 0;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+
+    .article {
+      background-color: #ffffff; /* White background */
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .article img {
+      max-width: 100%;
+      border-radius: 8px;
+    }
+
+    .article h3 {
+      color: #000000; /* Black */
+    }
+
+    @media (max-width: 600px) {
+      nav {
+        flex-direction: column;
+      }
+
+      nav a, nav button {
+        margin: 10px 0;
+      }
+    }
+
+    /* Chat Modal Styles */
+    .chat-modal {
+      display: none;
+      position: absolute;
+      border: 2px solid #c8bfaf; /* Dark Off White */
+      background-color: #ffffff; /* White background */
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+      border-radius: 10px 10px 0 0;
+      width: 300px;
+      z-index: 1000; /* Ensure it appears above other elements */
+    }
+
+    .chat-modal-header {
+      background-color: #c8bfaf; /* Dark Off White */
+      color: #000000; /* White text */
+      padding: 10px;
+      text-align: center;
+      border-radius: 10px 10px 0 0;
+      position: relative; /* Added for positioning the close button */
+    }
+
+    .chat-modal-body {
+      padding: 10px;
+      max-height: 200px;
+      overflow-y: auto;
+    }
+
+    .chat-modal-footer {
+      padding: 10px;
+      text-align: center;
+    }
+
+    .close-chat {
+      background-color: #000000; /* Darker mint green */
+      color: #ffffff; /* White text */
+      border: none;
+      padding: 5px 10px;
+      cursor: pointer;
+      border-radius: 5px;
+      position: absolute;
+      top: 10px;
+      right: 10px;
+    }
+    #about-us {
+      font: serif;
+      font-size: xx-large;
+      font-weight: bold;
+
+    }
+
+    .chat-input {
+      width: calc(100% - 80px);
+      padding: 5px;
+      margin-right: 5px;
+      border: 1px solid #c8bfaf; /* Off White */
+      border-radius: 5px;
+    }
+
+    .send-button {
+      background-color: #000000; /* Black */
+      color: #ffffff; /* White text */
+      border: none;
+      padding: 5px 10px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    .send-button:hover {
+      background-color: #c8bfaf; /* Off White */
+    }
+
+  </style>
+  <script>
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'Enter' || event.keyCode === 13) {
+        document.getElementById('send-button').click();
+      }
+    });
+
+    function openChat() {
+      const chatButton = document.querySelector('nav button');
+      const chatModal = document.getElementById("chatModal");
+      const rect = chatButton.getBoundingClientRect();
+      chatModal.style.top = `${rect.bottom}px`;
+      chatModal.style.right = `${window.innerWidth - rect.right}px`;
+      chatModal.style.display = "block";
+    }
+
+    function closeChat() {
+      document.getElementById("chatModal").style.display = "none";
+    }
+
+    async function sendMessage() {
+      const messageInput = document.getElementById("chatInput");
+      const message = messageInput.value.trim();
+      if (message) {
+        // Display user's message
+        const chatBody = document.querySelector(".chat-modal-body");
+        const userMessageElement = document.createElement("p");
+        userMessageElement.textContent = `You: ${message}`;
+        chatBody.appendChild(userMessageElement);
+        messageInput.value = "";
+        chatBody.scrollTop = chatBody.scrollHeight;
+
+        // Send message to the Flask server
+        try {
+          const response = await fetch('/api/chat', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ message: message })
+          });
+
+          const data = await response.json();
+          // Display the API response
+          const botMessageElement = document.createElement("p");
+          botMessageElement.textContent = `Gemini: ${data.reply}`;
+          chatBody.appendChild(botMessageElement);
+          chatBody.scrollTop = chatBody.scrollHeight;
+        } catch (error) {
+          console.error('Error sending message:', error);
+        }
+      }
+    }
+  </script>
+</head>
+<body>
+  <header>
+    <a href="/">
+      <img src="/static/images/SURE.png" alt="S.U.R.E Logo">
+    </a>
+  </header>
+
+  <nav>
+    <a href="/" title="Learn about SURE">Homepage</a>
+    <a href="resources_page" title="Explore our resources">Information Database</a>
+    <a href="/involve" title="Find out how to get involved">Get Involved</a>
+    <button onclick="openChat()" title="Chat with us!">Sure-Bot</button>
+  </nav>
+
+  <div class="search-bar-container">
+    <div class="search-bar">
+      <input type="text" placeholder="Search...">
+      <button>Search</button>
+    </div>
+  </div>
+
+  <main>
+    <section id="about-us">
+    Information Database  
+    </section>
+
+    <section id="programs">
+      Here below are our education resources for highschool students.
+    </section>
+    <section id="resources">
+        <!-- RESOURCES HERE -->
+        <h3 class="c1" id="h.ji239iz5o5o2">
+          <span class="c6 c0"
+            >1. New York City Mayor&rsquo;s Youth Employment Program (MYEP)</span
+          >
+        </h3>
+        <ul class="c2 lst-kix_ctjsykekppgq-0">
+          <li class="c4 li-bullet-0">
+            <span class="c0">Description:</span
+            ><span class="c3"
+              >&nbsp;Offers summer job placements and internships for youth in New
+              York City.</span
+            >
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Eligibility:</span
+            ><span class="c3">&nbsp;NYC high school students aged 14-24.</span>
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Application Deadline &amp; Process:</span
+            ><span class="c3"
+              >&nbsp;Applications are typically accepted from January to April.
+              Apply online through the NYC Youth Portal.</span
+            >
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Contact Information:</span
+            ><span class="c3"
+              >&nbsp;NYC Department of Youth and Community Development, (212)
+              676-9421.</span
+            >
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Website:</span><span class="c3">&nbsp;NYC MYEP</span>
+          </li>
+        </ul>
+        <h3 class="c1" id="h.t752n0pyi60m">
+          <span class="c6 c0">2. The Posse Foundation</span>
+        </h3>
+        <ul class="c2 lst-kix_h8xjwsz0g3o-0">
+          <li class="c4 li-bullet-0">
+            <span class="c0">Description:</span
+            ><span class="c3"
+              >&nbsp;Provides full-tuition scholarships and support for students
+              from diverse backgrounds to attend partner colleges.</span
+            >
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Eligibility:</span
+            ><span class="c3"
+              >&nbsp;High school juniors from underserved backgrounds.</span
+            >
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Application Deadline &amp; Process:</span
+            ><span class="c3"
+              >&nbsp;Applications are accepted in the fall. Submit through your high
+              school counselor or local Posse office.</span
+            >
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Contact Information:</span
+            ><span class="c3">&nbsp;(212) 405-1690, info@possefoundation.org.</span>
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Website:</span
+            ><span
+              ><a
+                class="c5"
+                href="https://www.google.com/url?q=https://www.possefoundation.org/&amp;sa=D&amp;source=editors&amp;ust=1721763748930550&amp;usg=AOvVaw2TA3KNsylqlJV3_2Zp6Bvw"
+                >&nbsp;</a
+              ></span
+            ><span class="c8"
+              ><a
+                class="c5"
+                href="https://www.google.com/url?q=https://www.possefoundation.org/&amp;sa=D&amp;source=editors&amp;ust=1721763748930653&amp;usg=AOvVaw3EThCmYYOUdGh0Qah0rabq"
+                >The Posse Foundation</a
+              ></span
+            >
+          </li>
+        </ul>
+        <h3 class="c1" id="h.4j2lw6coyc65">
+          <span class="c6 c0">3. New York City College Prep</span>
+        </h3>
+        <ul class="c2 lst-kix_5ucx782jcv5c-0">
+          <li class="c4 li-bullet-0">
+            <span class="c0">Description:</span
+            ><span class="c3"
+              >&nbsp;Offers free SAT prep courses, college counseling, and
+              mentorship.</span
+            >
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Eligibility:</span
+            ><span class="c3">&nbsp;High school students in NYC.</span>
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Application Deadline &amp; Process:</span
+            ><span class="c3">&nbsp;Rolling admissions. Apply online.</span>
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Contact Information:</span
+            ><span class="c3">&nbsp;(646) 794-3000.</span>
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Website:</span
+            ><span
+              ><a
+                class="c5"
+                href="https://www.google.com/url?q=https://www.nyccollegeprep.org/&amp;sa=D&amp;source=editors&amp;ust=1721763748931107&amp;usg=AOvVaw3-hC8hk_NQNBpwgxYPgy0a"
+                >&nbsp;</a
+              ></span
+            ><span class="c8"
+              ><a
+                class="c5"
+                href="https://www.google.com/url?q=https://www.nyccollegeprep.org/&amp;sa=D&amp;source=editors&amp;ust=1721763748931206&amp;usg=AOvVaw1iYULlXVNfUc7gqa946C3i"
+                >NYC College Prep</a
+              ></span
+            >
+          </li>
+        </ul>
+        <h3 class="c1" id="h.pnqrjwenx9p3">
+          <span class="c6 c0">4. Prep for Prep</span>
+        </h3>
+        <ul class="c2 lst-kix_8p3adfykte86-0">
+          <li class="c4 li-bullet-0">
+            <span class="c0">Description:</span
+            ><span class="c3"
+              >&nbsp;Prepares underserved students for entrance into top NYC
+              independent schools and colleges.</span
+            >
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Eligibility:</span
+            ><span class="c3"
+              >&nbsp;High school students from underserved communities.</span
+            >
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Application Deadline &amp; Process:</span
+            ><span class="c3"
+              >&nbsp;Applications typically open in the fall. Apply online.</span
+            >
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Contact Information:</span
+            ><span class="c3">&nbsp;(212) 579-0903, info@prepforprep.org.</span>
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Website:</span
+            ><span
+              ><a
+                class="c5"
+                href="https://www.google.com/url?q=https://www.prepforprep.org/&amp;sa=D&amp;source=editors&amp;ust=1721763748931647&amp;usg=AOvVaw1JNlypFmNUji6u8bscvDTy"
+                >&nbsp;</a
+              ></span
+            ><span class="c8"
+              ><a
+                class="c5"
+                href="https://www.google.com/url?q=https://www.prepforprep.org/&amp;sa=D&amp;source=editors&amp;ust=1721763748931745&amp;usg=AOvVaw2lv2tjfhT6xqe9B4yBlsOX"
+                >Prep for Prep</a
+              ></span
+            >
+          </li>
+        </ul>
+        <h3 class="c1" id="h.tnu14re6ws1z">
+          <span class="c6 c0">5. The Future Leaders Program</span>
+        </h3>
+        <ul class="c2 lst-kix_7wz1yzcfvbpm-0">
+          <li class="c4 li-bullet-0">
+            <span class="c0">Description:</span
+            ><span class="c3"
+              >&nbsp;Provides leadership training and career development for high
+              school students.</span
+            >
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Eligibility:</span
+            ><span class="c3">&nbsp;High school students in NYC.</span>
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Application Deadline &amp; Process:</span
+            ><span class="c3"
+              >&nbsp;Apply by spring each year. Submit online application.</span
+            >
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Contact Information:</span
+            ><span class="c3">&nbsp;(718) 555-1234.</span>
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Website:</span
+            ><span
+              ><a
+                class="c5"
+                href="https://www.google.com/url?q=http://www.futureleadersnyc.org/&amp;sa=D&amp;source=editors&amp;ust=1721763748932194&amp;usg=AOvVaw1grsoVg4HwvUxiFEcwToJe"
+                >&nbsp;</a
+              ></span
+            ><span class="c8"
+              ><a
+                class="c5"
+                href="https://www.google.com/url?q=http://www.futureleadersnyc.org/&amp;sa=D&amp;source=editors&amp;ust=1721763748932318&amp;usg=AOvVaw26YzuPTgAHa59LyeIvdfz9"
+                >Future Leaders Program</a
+              ></span
+            >
+          </li>
+        </ul>
+        <h3 class="c1" id="h.uilnbrz96un4">
+          <span class="c6 c0"
+            >6. NYC Department of Education High School Internship Program</span
+          >
+        </h3>
+        <ul class="c2 lst-kix_905pwlib5ic6-0">
+          <li class="c4 li-bullet-0">
+            <span class="c0">Description:</span
+            ><span class="c3"
+              >&nbsp;Offers internships in various city agencies for high school
+              students.</span
+            >
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Eligibility:</span
+            ><span class="c3">&nbsp;NYC high school students aged 14-19.</span>
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Application Deadline &amp; Process:</span
+            ><span class="c3"
+              >&nbsp;Applications are accepted in the spring. Apply online through
+              the DOE website.</span
+            >
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Contact Information:</span
+            ><span class="c3">&nbsp;(212) 374-1234.</span>
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Website:</span
+            ><span class="c3">&nbsp;NYC DOE Internships</span>
+          </li>
+        </ul>
+        <h3 class="c1" id="h.oarmwlxn19j4">
+          <span class="c6 c0">7. Manhattan College Pre-College Program</span>
+        </h3>
+        <ul class="c2 lst-kix_ls0obe5j4054-0">
+          <li class="c4 li-bullet-0">
+            <span class="c0">Description:</span
+            ><span class="c3"
+              >&nbsp;Offers summer courses for high school students to experience
+              college-level classes.</span
+            >
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Eligibility:</span
+            ><span class="c3">&nbsp;Rising high school juniors and seniors.</span>
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Application Deadline &amp; Process:</span
+            ><span class="c3"
+              >&nbsp;Apply by April. Submit online application.</span
+            >
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Contact Information:</span
+            ><span class="c3">&nbsp;(718) 862-8000.</span>
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Website:</span
+            ><span class="c3">&nbsp;Manhattan College Pre-College</span>
+          </li>
+        </ul>
+        <h3 class="c1" id="h.vic39dksqg61">
+          <span class="c6 c0">8. A Better Chance (ABC)</span>
+        </h3>
+        <ul class="c2 lst-kix_zepyx729q5a-0">
+          <li class="c4 li-bullet-0">
+            <span class="c0">Description:</span
+            ><span class="c3"
+              >&nbsp;Supports students of color in gaining access to top independent
+              schools and colleges.</span
+            >
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Eligibility:</span
+            ><span class="c3"
+              >&nbsp;High school students of color from underserved
+              backgrounds.</span
+            >
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Application Deadline &amp; Process:</span
+            ><span class="c3"
+              >&nbsp;Applications are accepted year-round. Apply online.</span
+            >
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Contact Information:</span
+            ><span class="c3">&nbsp;(212) 481-8688, info@abetterchance.org.</span>
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Website:</span
+            ><span
+              ><a
+                class="c5"
+                href="https://www.google.com/url?q=https://www.abetterchance.org/&amp;sa=D&amp;source=editors&amp;ust=1721763748933539&amp;usg=AOvVaw2GQF4e4dAy0RMXTVptU0ty"
+                >&nbsp;</a
+              ></span
+            ><span class="c8"
+              ><a
+                class="c5"
+                href="https://www.google.com/url?q=https://www.abetterchance.org/&amp;sa=D&amp;source=editors&amp;ust=1721763748933642&amp;usg=AOvVaw1icD7HUFy_AG6G4jCTUDQl"
+                >A Better Chance</a
+              ></span
+            >
+          </li>
+        </ul>
+        <h3 class="c1" id="h.iy6w8xyn4i7t">
+          <span class="c6 c0">9. Global Kids</span>
+        </h3>
+        <ul class="c2 lst-kix_dc3mv4a4q2nm-0">
+          <li class="c4 li-bullet-0">
+            <span class="c0">Description:</span
+            ><span class="c3"
+              >&nbsp;Provides after-school programs focusing on leadership and
+              global issues.</span
+            >
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Eligibility:</span
+            ><span class="c3">&nbsp;High school students in NYC.</span>
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Application Deadline &amp; Process:</span
+            ><span class="c3"
+              >&nbsp;Rolling admissions. Apply through local program sites.</span
+            >
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Contact Information:</span
+            ><span class="c3">&nbsp;(212) 226-0130.</span>
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Website:</span
+            ><span
+              ><a
+                class="c5"
+                href="https://www.google.com/url?q=https://www.globalkids.org/&amp;sa=D&amp;source=editors&amp;ust=1721763748934185&amp;usg=AOvVaw0QwjOMV63dY18YBTVsq4VP"
+                >&nbsp;</a
+              ></span
+            ><span class="c8"
+              ><a
+                class="c5"
+                href="https://www.google.com/url?q=https://www.globalkids.org/&amp;sa=D&amp;source=editors&amp;ust=1721763748934285&amp;usg=AOvVaw31gguiPlHnUpwDSV4NV-av"
+                >Global Kids</a
+              ></span
+            >
+          </li>
+        </ul>
+        <h3 class="c1" id="h.hb5fsirxv8gh">
+          <span class="c6 c0">10. Summer Search</span>
+        </h3>
+        <ul class="c2 lst-kix_tw4rln8qsisw-0">
+          <li class="c4 li-bullet-0">
+            <span class="c0">Description:</span
+            ><span class="c3"
+              >&nbsp;Offers summer programs and mentoring for underserved high
+              school students.</span
+            >
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Eligibility:</span
+            ><span class="c3"
+              >&nbsp;High school students from underserved communities.</span
+            >
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Application Deadline &amp; Process:</span
+            ><span class="c3"
+              >&nbsp;Applications are accepted in the fall. Apply online.</span
+            >
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Contact Information:</span
+            ><span class="c3">&nbsp;(212) 937-7200, info@summersearch.org.</span>
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Website:</span
+            ><span
+              ><a
+                class="c5"
+                href="https://www.google.com/url?q=https://www.summersearch.org/&amp;sa=D&amp;source=editors&amp;ust=1721763748934794&amp;usg=AOvVaw1Vu_YYH12x3Z5SkjyoyVKK"
+                >&nbsp;</a
+              ></span
+            ><span class="c8"
+              ><a
+                class="c5"
+                href="https://www.google.com/url?q=https://www.summersearch.org/&amp;sa=D&amp;source=editors&amp;ust=1721763748934895&amp;usg=AOvVaw0zPFc6MclTAxNED0GCk10c"
+                >Summer Search</a
+              ></span
+            >
+          </li>
+        </ul>
+        <h3 class="c1" id="h.4ws1plkvkxb5">
+          <span class="c6 c0"
+            >11. New York University (NYU) Precollege Program</span
+          >
+        </h3>
+        <ul class="c2 lst-kix_hmzc9erqnz7u-0">
+          <li class="c4 li-bullet-0">
+            <span class="c0">Description:</span
+            ><span class="c3"
+              >&nbsp;Provides college courses and seminars for high school
+              students.</span
+            >
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Eligibility:</span
+            ><span class="c3">&nbsp;Rising juniors and seniors.</span>
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Application Deadline &amp; Process:</span
+            ><span class="c3">&nbsp;Apply by April. Submit online.</span>
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Contact Information:</span
+            ><span class="c3">&nbsp;(212) 998-2292.</span>
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Website:</span
+            ><span class="c3">&nbsp;NYU Precollege</span>
+          </li>
+        </ul>
+        <h3 class="c1" id="h.q953xzhjyjka">
+          <span class="c6 c0">12. The Opportunity Network</span>
+        </h3>
+        <ul class="c2 lst-kix_5pmvh02fqt0y-0">
+          <li class="c4 li-bullet-0">
+            <span class="c0">Description:</span
+            ><span class="c3"
+              >&nbsp;Offers career readiness programs and college access
+              support.</span
+            >
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Eligibility:</span
+            ><span class="c3"
+              >&nbsp;High school students from underserved backgrounds.</span
+            >
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Application Deadline &amp; Process:</span
+            ><span class="c3">&nbsp;Rolling admissions. Apply online.</span>
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Contact Information:</span
+            ><span class="c3">&nbsp;(646) 833-1071.</span>
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Website:</span
+            ><span
+              ><a
+                class="c5"
+                href="https://www.google.com/url?q=https://www.opportunitynetwork.org/&amp;sa=D&amp;source=editors&amp;ust=1721763748935894&amp;usg=AOvVaw1wqZLrj0khhx9QIUnOQE_T"
+                >&nbsp;</a
+              ></span
+            ><span class="c8"
+              ><a
+                class="c5"
+                href="https://www.google.com/url?q=https://www.opportunitynetwork.org/&amp;sa=D&amp;source=editors&amp;ust=1721763748936053&amp;usg=AOvVaw1IrlbSMNNNpjZylG2dlWbA"
+                >The Opportunity Network</a
+              ></span
+            >
+          </li>
+        </ul>
+        <h3 class="c1" id="h.1la3g745ef1x">
+          <span class="c6 c0">13. The Dream.US Scholarship</span>
+        </h3>
+        <ul class="c2 lst-kix_9o9migs52sy9-0">
+          <li class="c4 li-bullet-0">
+            <span class="c0">Description:</span
+            ><span class="c3"
+              >&nbsp;Provides scholarships for undocumented students to attend
+              college.</span
+            >
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Eligibility:</span
+            ><span class="c3">&nbsp;Undocumented high school seniors.</span>
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Application Deadline &amp; Process:</span
+            ><span class="c3"
+              >&nbsp;Applications are open in the fall. Apply online.</span
+            >
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Contact Information:</span
+            ><span class="c3">&nbsp;(202) 773-8250, info@thedream.us.</span>
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Website:</span
+            ><span
+              ><a
+                class="c5"
+                href="https://www.google.com/url?q=https://www.thedream.us/&amp;sa=D&amp;source=editors&amp;ust=1721763748936612&amp;usg=AOvVaw2fap3PHkhqxeOzsPGJ72fJ"
+                >&nbsp;</a
+              ></span
+            ><span class="c8"
+              ><a
+                class="c5"
+                href="https://www.google.com/url?q=https://www.thedream.us/&amp;sa=D&amp;source=editors&amp;ust=1721763748936718&amp;usg=AOvVaw0zv6j163WtEZNBWVMh6Sug"
+                >The Dream.US</a
+              ></span
+            >
+          </li>
+        </ul>
+        <h3 class="c1" id="h.2bf0opiaxger">
+          <span class="c6 c0">14. Harlem Children&rsquo;s Zone</span>
+        </h3>
+        <ul class="c2 lst-kix_67190mpswhb-0">
+          <li class="c4 li-bullet-0">
+            <span class="c0">Description:</span
+            ><span class="c3"
+              >&nbsp;Offers comprehensive educational support from early childhood
+              through college.</span
+            >
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Eligibility:</span
+            ><span class="c3">&nbsp;Students in Harlem.</span>
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Application Deadline &amp; Process:</span
+            ><span class="c3"
+              >&nbsp;Rolling admissions. Apply online or in-person.</span
+            >
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Contact Information:</span
+            ><span class="c3">&nbsp;(212) 534-8100.</span>
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Website:</span
+            ><span
+              ><a
+                class="c5"
+                href="https://www.google.com/url?q=https://hcz.org/&amp;sa=D&amp;source=editors&amp;ust=1721763748937285&amp;usg=AOvVaw3cQYowSSRK3nkWFfU4qI4t"
+                >&nbsp;</a
+              ></span
+            ><span class="c8"
+              ><a
+                class="c5"
+                href="https://www.google.com/url?q=https://hcz.org/&amp;sa=D&amp;source=editors&amp;ust=1721763748937375&amp;usg=AOvVaw2qtTyo20VQsvW3omRya62g"
+                >Harlem Children&rsquo;s Zone</a
+              ></span
+            >
+          </li>
+        </ul>
+        <h3 class="c1" id="h.u6o3ud7njkqa">
+          <span class="c6 c0">15. Girls Who Code Summer Immersion Program</span>
+        </h3>
+        <ul class="c2 lst-kix_ufichj5ej9me-0">
+          <li class="c4 li-bullet-0">
+            <span class="c0">Description:</span
+            ><span class="c3"
+              >&nbsp;Offers a summer program for girls to learn computer science and
+              coding.</span
+            >
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Eligibility:</span
+            ><span class="c3">&nbsp;Female high school juniors and seniors.</span>
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Application Deadline &amp; Process:</span
+            ><span class="c3">&nbsp;Applications open in fall. Apply online.</span>
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Contact Information:</span
+            ><span class="c3">&nbsp;(212) 226-0110.</span>
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Website:</span
+            ><span
+              ><a
+                class="c5"
+                href="https://www.google.com/url?q=https://girlswhocode.com/&amp;sa=D&amp;source=editors&amp;ust=1721763748937836&amp;usg=AOvVaw1a7jvPuo0fO_-7jDuyR3nJ"
+                >&nbsp;</a
+              ></span
+            ><span class="c8"
+              ><a
+                class="c5"
+                href="https://www.google.com/url?q=https://girlswhocode.com/&amp;sa=D&amp;source=editors&amp;ust=1721763748937925&amp;usg=AOvVaw3enHl9Ma08TKUwGoWooyOs"
+                >Girls Who Code</a
+              ></span
+            >
+          </li>
+        </ul>
+        <h3 class="c1" id="h.kikbwizrreo">
+          <span class="c6 c0">16. The New York Public Library Teen Programs</span>
+        </h3>
+        <ul class="c2 lst-kix_p3p4p8r0t97i-0">
+          <li class="c4 li-bullet-0">
+            <span class="c0">Description:</span
+            ><span class="c3"
+              >&nbsp;Provides various educational and enrichment programs for
+              teens.</span
+            >
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Eligibility:</span
+            ><span class="c3">&nbsp;NYC high school students.</span>
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Application Deadline &amp; Process:</span
+            ><span class="c3"
+              >&nbsp;Varies by program. Check local branch for details.</span
+            >
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Contact Information:</span
+            ><span class="c3">&nbsp;(917) 275-6975.</span>
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Website:</span
+            ><span class="c3">&nbsp;NYPL Teen Programs</span>
+          </li>
+        </ul>
+        <h3 class="c1" id="h.vdvxvtrsdrzm">
+          <span class="c6 c0">17. College Bound Initiative</span>
+        </h3>
+        <ul class="c2 lst-kix_1j0z08bkadxz-0">
+          <li class="c4 li-bullet-0">
+            <span class="c0">Description:</span
+            ><span class="c3"
+              >&nbsp;Helps students navigate the college application process with
+              one-on-one mentoring.</span
+            >
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Eligibility:</span
+            ><span class="c3">&nbsp;High school juniors and seniors.</span>
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Application Deadline &amp; Process:</span
+            ><span class="c3">&nbsp;Apply online.</span>
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Contact Information:</span
+            ><span class="c3">&nbsp;(212) 529-4000.</span>
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Website:</span
+            ><span
+              ><a
+                class="c5"
+                href="https://www.google.com/url?q=https://www.collegeboundinitiative.org/&amp;sa=D&amp;source=editors&amp;ust=1721763748938962&amp;usg=AOvVaw125y8W7Wxt0ZxXB3xZgP6Y"
+                >&nbsp;</a
+              ></span
+            ><span class="c8"
+              ><a
+                class="c5"
+                href="https://www.google.com/url?q=https://www.collegeboundinitiative.org/&amp;sa=D&amp;source=editors&amp;ust=1721763748939098&amp;usg=AOvVaw0qRYnBZhnvFgpkYJrDM2m6"
+                >College Bound Initiative</a
+              ></span
+            >
+          </li>
+        </ul>
+        <h3 class="c1" id="h.yxi29ao38eo3">
+          <span class="c6 c0">18. The Scholly Scholarship App</span>
+        </h3>
+        <ul class="c2 lst-kix_2trbbd7fbjlr-0">
+          <li class="c4 li-bullet-0">
+            <span class="c0">Description:</span
+            ><span class="c3"
+              >&nbsp;Provides a database of scholarships and grants for high school
+              students.</span
+            >
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Eligibility:</span
+            ><span class="c3">&nbsp;High school and college students.</span>
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Application Deadline &amp; Process:</span
+            ><span class="c3"
+              >&nbsp;Rolling. Search for scholarships and apply through the
+              app.</span
+            >
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Contact Information:</span
+            ><span class="c3">&nbsp;support@myscholly.com.</span>
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Website:</span
+            ><span
+              ><a
+                class="c5"
+                href="https://www.google.com/url?q=https://myscholly.com/&amp;sa=D&amp;source=editors&amp;ust=1721763748939607&amp;usg=AOvVaw28LNx2JtYlIj26CKw-Y_GR"
+                >&nbsp;</a
+              ></span
+            ><span class="c8"
+              ><a
+                class="c5"
+                href="https://www.google.com/url?q=https://myscholly.com/&amp;sa=D&amp;source=editors&amp;ust=1721763748939704&amp;usg=AOvVaw3si-3r6-n7T6F617x_hqqF"
+                >Scholly</a
+              ></span
+            >
+          </li>
+        </ul>
+        <h3 class="c1" id="h.i62s4rokc2tf">
+          <span class="c6 c0"
+            >19. The National Society of High School Scholars (NSHSS)</span
+          >
+        </h3>
+        <ul class="c2 lst-kix_sogkoaprm4en-0">
+          <li class="c4 li-bullet-0">
+            <span class="c0">Description:</span
+            ><span class="c3"
+              >&nbsp;Offers scholarships and opportunities for high-achieving high
+              school students.</span
+            >
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Eligibility:</span
+            ><span class="c3"
+              >&nbsp;High school juniors and seniors with academic
+              achievements.</span
+            >
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Application Deadline &amp; Process:</span
+            ><span class="c3"
+              >&nbsp;Membership is ongoing. Apply online for scholarships.</span
+            >
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Contact Information:</span
+            ><span class="c3">&nbsp;(404) 235-3900, info@nshss.org.</span>
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Website:</span
+            ><span
+              ><a
+                class="c5"
+                href="https://www.google.com/url?q=https://www.nshss.org/&amp;sa=D&amp;source=editors&amp;ust=1721763748940258&amp;usg=AOvVaw24sTMQL-IA2puIi-dFYim5"
+                >&nbsp;</a
+              ></span
+            ><span class="c8"
+              ><a
+                class="c5"
+                href="https://www.google.com/url?q=https://www.nshss.org/&amp;sa=D&amp;source=editors&amp;ust=1721763748940367&amp;usg=AOvVaw2MnKJE-Kfi_0gAphopjsZw"
+                >NSHSS</a
+              ></span
+            >
+          </li>
+        </ul>
+        <h3 class="c1" id="h.b5f1wclu4hwh">
+          <span class="c6 c0">20. NYC DOE College and Career Readiness</span>
+        </h3>
+        <ul class="c2 lst-kix_d4hcocta8rsp-0">
+          <li class="c4 li-bullet-0">
+            <span class="c0">Description:</span
+            ><span class="c3"
+              >&nbsp;Provides resources and programs to prepare students for college
+              and careers.</span
+            >
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Eligibility:</span
+            ><span class="c3">&nbsp;High school students in NYC.</span>
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Application Deadline &amp; Process:</span
+            ><span class="c3"
+              >&nbsp;Various deadlines depending on program. Apply through
+              school.</span
+            >
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Contact Information:</span
+            ><span class="c3">&nbsp;(212) 374-1234.</span>
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Website:</span
+            ><span class="c3">&nbsp;NYC DOE College and Career</span>
+          </li>
+        </ul>
+        <h3 class="c1" id="h.jod0u7ixekw5">
+          <span class="c6 c0">21. Junior Achievement of New York</span>
+        </h3>
+        <ul class="c2 lst-kix_8abxmb8cyjc0-0">
+          <li class="c4 li-bullet-0">
+            <span class="c0">Description:</span
+            ><span class="c3"
+              >&nbsp;Offers financial literacy and career readiness programs for
+              high school students.</span
+            >
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Eligibility:</span
+            ><span class="c3">&nbsp;High school students in NYC.</span>
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Application Deadline &amp; Process:</span
+            ><span class="c3"
+              >&nbsp;Rolling admissions. Apply through local program
+              coordinators.</span
+            >
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Contact Information:</span
+            ><span class="c3">&nbsp;(212) 745-1500.</span>
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Website:</span
+            ><span
+              ><a
+                class="c5"
+                href="https://www.google.com/url?q=https://www.jany.org/&amp;sa=D&amp;source=editors&amp;ust=1721763748941167&amp;usg=AOvVaw3S_mME9COuQeNK7_sQJTZI"
+                >&nbsp;</a
+              ></span
+            ><span class="c8"
+              ><a
+                class="c5"
+                href="https://www.google.com/url?q=https://www.jany.org/&amp;sa=D&amp;source=editors&amp;ust=1721763748941270&amp;usg=AOvVaw0KMuJHg0bjdNGxA8w55CnG"
+                >Junior Achievement</a
+              ></span
+            >
+          </li>
+        </ul>
+        <h3 class="c1" id="h.pdhbikcsznpb">
+          <span class="c6 c0">22. Minds Matter</span>
+        </h3>
+        <ul class="c2 lst-kix_yox1gmgdh5d-0">
+          <li class="c4 li-bullet-0">
+            <span class="c0">Description:</span
+            ><span class="c3"
+              >&nbsp;Provides mentoring and support for high-achieving low-income
+              students to gain college access.</span
+            >
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Eligibility:</span
+            ><span class="c3">&nbsp;High school sophomores and juniors.</span>
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Application Deadline &amp; Process:</span
+            ><span class="c3"
+              >&nbsp;Applications open in spring. Apply online.</span
+            >
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Contact Information:</span
+            ><span class="c3">&nbsp;(212) 391-7244, info@mindsmatter.org.</span>
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Website:</span
+            ><span
+              ><a
+                class="c5"
+                href="https://www.google.com/url?q=https://www.mindsmatter.org/&amp;sa=D&amp;source=editors&amp;ust=1721763748941717&amp;usg=AOvVaw1J8Uw9xC1pVe_KG3QYjQWN"
+                >&nbsp;</a
+              ></span
+            ><span class="c8"
+              ><a
+                class="c5"
+                href="https://www.google.com/url?q=https://www.mindsmatter.org/&amp;sa=D&amp;source=editors&amp;ust=1721763748941818&amp;usg=AOvVaw2ixNs8E2ouiRAjzBeEBqLr"
+                >Minds Matter</a
+              ></span
+            >
+          </li>
+        </ul>
+        <h3 class="c1" id="h.o6zs6z26ap7m">
+          <span class="c6 c0">23. The Princeton Review SAT Prep</span>
+        </h3>
+        <ul class="c2 lst-kix_5sye2zlegtqy-0">
+          <li class="c4 li-bullet-0">
+            <span class="c0">Description:</span
+            ><span class="c3"
+              >&nbsp;Offers SAT test preparation and college admissions
+              consulting.</span
+            >
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Eligibility:</span
+            ><span class="c3">&nbsp;High school students.</span>
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Application Deadline &amp; Process:</span
+            ><span class="c3">&nbsp;Varies by course. Register online.</span>
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Contact Information:</span
+            ><span class="c3">&nbsp;(800) 273-8439.</span>
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Website:</span
+            ><span
+              ><a
+                class="c5"
+                href="https://www.google.com/url?q=https://www.princetonreview.com/&amp;sa=D&amp;source=editors&amp;ust=1721763748942382&amp;usg=AOvVaw1xKXGUsn6e3JPaxjdB2PSZ"
+                >&nbsp;</a
+              ></span
+            ><span class="c8"
+              ><a
+                class="c5"
+                href="https://www.google.com/url?q=https://www.princetonreview.com/&amp;sa=D&amp;source=editors&amp;ust=1721763748942506&amp;usg=AOvVaw35_kpK3_1-ks49vOu9TERN"
+                >The Princeton Review</a
+              ></span
+            >
+          </li>
+        </ul>
+        <h3 class="c1" id="h.4d8lttoew9yc">
+          <span class="c6 c0">24. Success Academy Summer Camps</span>
+        </h3>
+        <ul class="c2 lst-kix_wvmgpmsedx5-0">
+          <li class="c4 li-bullet-0">
+            <span class="c0">Description:</span
+            ><span class="c3"
+              >&nbsp;Provides academic and enrichment camps for students.</span
+            >
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Eligibility:</span
+            ><span class="c3"
+              >&nbsp;Students enrolled in Success Academy charter schools.</span
+            >
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Application Deadline &amp; Process:</span
+            ><span class="c3"
+              >&nbsp;Apply in spring. Check with local Success Academy for
+              details.</span
+            >
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Contact Information:</span
+            ><span class="c3">&nbsp;(212) 228-5570.</span>
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Website:</span
+            ><span
+              ><a
+                class="c5"
+                href="https://www.google.com/url?q=https://www.successacademies.org/&amp;sa=D&amp;source=editors&amp;ust=1721763748943013&amp;usg=AOvVaw3hOBxscBlWj-ciejbEv32k"
+                >&nbsp;</a
+              ></span
+            ><span class="c8"
+              ><a
+                class="c5"
+                href="https://www.google.com/url?q=https://www.successacademies.org/&amp;sa=D&amp;source=editors&amp;ust=1721763748943111&amp;usg=AOvVaw3eyoj-OSLLcA4Z-3TvsjP_"
+                >Success Academy</a
+              ></span
+            >
+          </li>
+        </ul>
+        <h3 class="c1" id="h.3hz5p2lq806v">
+          <span class="c6 c0"
+            >25. The New York Public Library&#39;s Summer Reading Program</span
+          >
+        </h3>
+        <ul class="c2 lst-kix_qlbhn7zi1jo0-0 start">
+          <li class="c4 li-bullet-0">
+            <span class="c0">Description:</span
+            ><span class="c3"
+              >&nbsp;Encourages reading and literacy through a summer program with
+              various activities.</span
+            >
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Eligibility:</span
+            ><span class="c3">&nbsp;NYC high school students.</span>
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Application Deadline &amp; Process:</span
+            ><span class="c3"
+              >&nbsp;Program runs during summer. Register through local library
+              branches.</span
+            >
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Contact Information:</span
+            ><span class="c3">&nbsp;(917) 275-6975.</span>
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Website:</span
+            ><span class="c3">&nbsp;NYPL Summer Reading</span>
+          </li>
+        </ul>
+        <p class="c11 c12"><span class="c3"></span></p>
+        <h3 class="c1" id="h.4p4azf68wd3g">
+          <span class="c6 c0">26. NYC Math for America Fellowship</span>
+        </h3>
+        <ul class="c2 lst-kix_9tb7lv3zi9m8-0 start">
+          <li class="c4 li-bullet-0">
+            <span class="c0">Description:</span
+            ><span class="c3"
+              >&nbsp;Offers fellowships for teachers, but includes programs for
+              students to enhance math skills.</span
+            >
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Eligibility:</span
+            ><span class="c3"
+              >&nbsp;High school students interested in advanced math.</span
+            >
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Application Deadline &amp; Process:</span
+            ><span class="c3"
+              >&nbsp;Apply by spring. Check the website for details on student
+              programs.</span
+            >
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Contact Information:</span
+            ><span class="c3">&nbsp;(212) 371-1881.</span>
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Website:</span
+            ><span
+              ><a
+                class="c5"
+                href="https://www.google.com/url?q=https://www.mathforamerica.org/&amp;sa=D&amp;source=editors&amp;ust=1721763748944024&amp;usg=AOvVaw3_g3lqjFjqtZWL1srfgE5O"
+                >&nbsp;</a
+              ></span
+            ><span class="c8"
+              ><a
+                class="c5"
+                href="https://www.google.com/url?q=https://www.mathforamerica.org/&amp;sa=D&amp;source=editors&amp;ust=1721763748944133&amp;usg=AOvVaw1I8Fb8G0NlDg2tbBxhqcZj"
+                >Math for America</a
+              ></span
+            >
+          </li>
+        </ul>
+        <h3 class="c1" id="h.nb29azcnmhvq">
+          <span class="c6 c0"
+            >27. The New York Times Student Journalism Program</span
+          >
+        </h3>
+        <ul class="c2 lst-kix_56npdmbcfm5f-0 start">
+          <li class="c4 li-bullet-0">
+            <span class="c0">Description:</span
+            ><span class="c3"
+              >&nbsp;Provides workshops and mentorship in journalism for high school
+              students.</span
+            >
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Eligibility:</span
+            ><span class="c3">&nbsp;NYC high school students.</span>
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Application Deadline &amp; Process:</span
+            ><span class="c3"
+              >&nbsp;Apply in the spring. Submit applications online.</span
+            >
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Contact Information:</span
+            ><span class="c3">&nbsp;(212) 556-1234.</span>
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Website:</span
+            ><span
+              ><a
+                class="c5"
+                href="https://www.google.com/url?q=https://www.nytimes.com/section/education/student-journalism&amp;sa=D&amp;source=editors&amp;ust=1721763748944617&amp;usg=AOvVaw2pBNPv8U-J3cyTnnZpUvOq"
+                >&nbsp;</a
+              ></span
+            ><span class="c8"
+              ><a
+                class="c5"
+                href="https://www.google.com/url?q=https://www.nytimes.com/section/education/student-journalism&amp;sa=D&amp;source=editors&amp;ust=1721763748944737&amp;usg=AOvVaw281eOrDfv7cFDjm9TmBZvj"
+                >NYT Student Journalism</a
+              ></span
+            >
+          </li>
+        </ul>
+        <h3 class="c1" id="h.txnrq3htwa8o">
+          <span class="c6 c0">28. The Young Scholars Program</span>
+        </h3>
+        <ul class="c2 lst-kix_mlcfp27rcgh-0 start">
+          <li class="c4 li-bullet-0">
+            <span class="c0">Description:</span
+            ><span class="c3"
+              >&nbsp;Offers academic enrichment and college preparation for
+              high-achieving students from underserved backgrounds.</span
+            >
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Eligibility:</span
+            ><span class="c3">&nbsp;High school juniors and seniors.</span>
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Application Deadline &amp; Process:</span
+            ><span class="c3"
+              >&nbsp;Apply by winter. Submit online application.</span
+            >
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Contact Information:</span
+            ><span class="c3">&nbsp;(212) 123-4567.</span>
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Website:</span
+            ><span
+              ><a
+                class="c5"
+                href="https://www.google.com/url?q=http://www.youngscholars.org/&amp;sa=D&amp;source=editors&amp;ust=1721763748945251&amp;usg=AOvVaw2eZGYIylYV_a7tRIYNTB5o"
+                >&nbsp;</a
+              ></span
+            ><span class="c8"
+              ><a
+                class="c5"
+                href="https://www.google.com/url?q=http://www.youngscholars.org/&amp;sa=D&amp;source=editors&amp;ust=1721763748945354&amp;usg=AOvVaw3pnUikWo1q1HFqJpKTKl3r"
+                >Young Scholars Program</a
+              ></span
+            >
+          </li>
+        </ul>
+        <h3 class="c1" id="h.f6edj9kwq3s1">
+          <span class="c6 c0"
+            >29. Columbia University&rsquo;s Science Honors Program</span
+          >
+        </h3>
+        <ul class="c2 lst-kix_ycv8vtdgdm36-0 start">
+          <li class="c4 li-bullet-0">
+            <span class="c0">Description:</span
+            ><span class="c3"
+              >&nbsp;Provides advanced science courses and research opportunities
+              for high school students.</span
+            >
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Eligibility:</span
+            ><span class="c3"
+              >&nbsp;High school students with a strong interest in science.</span
+            >
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Application Deadline &amp; Process:</span
+            ><span class="c3">&nbsp;Applications due in spring. Apply online.</span>
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Contact Information:</span
+            ><span class="c3">&nbsp;(212) 854-8808.</span>
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Website:</span
+            ><span class="c3">&nbsp;Columbia Science Honors</span>
+          </li>
+        </ul>
+        <h3 class="c1" id="h.r349hjpzbcqe">
+          <span class="c6 c0"
+            >30. New York City Audubon Society&#39;s Youth Education Programs</span
+          >
+        </h3>
+        <ul class="c2 lst-kix_mgzrebheyuye-0 start">
+          <li class="c4 li-bullet-0">
+            <span class="c0">Description:</span
+            ><span class="c3"
+              >&nbsp;Offers environmental education and conservation programs for
+              high school students.</span
+            >
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Eligibility:</span
+            ><span class="c3"
+              >&nbsp;High school students interested in environmental science.</span
+            >
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Application Deadline &amp; Process:</span
+            ><span class="c3">&nbsp;Rolling admissions. Apply online.</span>
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Contact Information:</span
+            ><span class="c3">&nbsp;(212) 691-7483.</span>
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Website:</span
+            ><span
+              ><a
+                class="c5"
+                href="https://www.google.com/url?q=https://www.nycaudubon.org/&amp;sa=D&amp;source=editors&amp;ust=1721763748946321&amp;usg=AOvVaw1dXKchu2hew7Jz-8Ud82qr"
+                >&nbsp;</a
+              ></span
+            ><span class="c8"
+              ><a
+                class="c5"
+                href="https://www.google.com/url?q=https://www.nycaudubon.org/&amp;sa=D&amp;source=editors&amp;ust=1721763748946419&amp;usg=AOvVaw2ovgnZitHrG7sGAg3qLiz6"
+                >NYC Audubon</a
+              ></span
+            >
+          </li>
+        </ul>
+        <h3 class="c1" id="h.k3x4uv9wg8mw">
+          <span class="c6 c0"
+            >31. The City University of New York (CUNY) Pre-College Programs</span
+          >
+        </h3>
+        <ul class="c2 lst-kix_355qxbaat02x-0 start">
+          <li class="c4 li-bullet-0">
+            <span class="c0">Description:</span
+            ><span class="c3"
+              >&nbsp;Provides academic enrichment and college readiness programs for
+              high school students.</span
+            >
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Eligibility:</span
+            ><span class="c3">&nbsp;High school students in NYC.</span>
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Application Deadline &amp; Process:</span
+            ><span class="c3"
+              >&nbsp;Apply by spring. Submit online application.</span
+            >
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Contact Information:</span
+            ><span class="c3">&nbsp;(718) 997-5000.</span>
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Website:</span
+            ><span class="c3">&nbsp;CUNY Pre-College Programs</span>
+          </li>
+        </ul>
+        <h3 class="c1" id="h.nupjk32vwahw">
+          <span class="c6 c0">32. The Edgemont Foundation Summer Programs</span>
+        </h3>
+        <ul class="c2 lst-kix_tnpyvgkm9if7-0 start">
+          <li class="c4 li-bullet-0">
+            <span class="c0">Description:</span
+            ><span class="c3"
+              >&nbsp;Offers summer enrichment programs focusing on academics and
+              personal development.</span
+            >
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Eligibility:</span
+            ><span class="c3"
+              >&nbsp;High school students from underserved communities.</span
+            >
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Application Deadline &amp; Process:</span
+            ><span class="c3"
+              >&nbsp;Apply by early spring. Submit online application.</span
+            >
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Contact Information:</span
+            ><span class="c3">&nbsp;(212) 555-7890.</span>
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Website:</span
+            ><span
+              ><a
+                class="c5"
+                href="https://www.google.com/url?q=http://www.edgemontfoundation.org/&amp;sa=D&amp;source=editors&amp;ust=1721763748947499&amp;usg=AOvVaw3FIDSnX_a37me2zWW-g-LD"
+                >&nbsp;</a
+              ></span
+            ><span class="c8"
+              ><a
+                class="c5"
+                href="https://www.google.com/url?q=http://www.edgemontfoundation.org/&amp;sa=D&amp;source=editors&amp;ust=1721763748947636&amp;usg=AOvVaw3rZRWhZpVybqA0HbJuWca8"
+                >Edgemont Foundation</a
+              ></span
+            >
+          </li>
+        </ul>
+        <h3 class="c1" id="h.4at126tfbcp2">
+          <span class="c6 c0">33. The Hispanic Scholarship Fund (HSF)</span>
+        </h3>
+        <ul class="c2 lst-kix_2a8oic3mwmjb-0 start">
+          <li class="c4 li-bullet-0">
+            <span class="c0">Description:</span
+            ><span class="c3"
+              >&nbsp;Provides scholarships and resources for Latino students
+              pursuing higher education.</span
+            >
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Eligibility:</span
+            ><span class="c3"
+              >&nbsp;Latino high school seniors and college-bound students.</span
+            >
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Application Deadline &amp; Process:</span
+            ><span class="c3">&nbsp;Apply by February. Submit online.</span>
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Contact Information:</span
+            ><span class="c3">&nbsp;(877) HSF-INFO, info@hsf.net.</span>
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Website:</span
+            ><span
+              ><a
+                class="c5"
+                href="https://www.google.com/url?q=https://www.hsf.net/&amp;sa=D&amp;source=editors&amp;ust=1721763748948314&amp;usg=AOvVaw3a9AhF9wYdG7k_egDKkDO2"
+                >&nbsp;</a
+              ></span
+            ><span class="c8"
+              ><a
+                class="c5"
+                href="https://www.google.com/url?q=https://www.hsf.net/&amp;sa=D&amp;source=editors&amp;ust=1721763748948411&amp;usg=AOvVaw1BeWXBKU-d01nVB3GwcZiI"
+                >Hispanic Scholarship Fund</a
+              ></span
+            >
+          </li>
+        </ul>
+        <h3 class="c1" id="h.tlbxnkxij8gv">
+          <span class="c6 c0"
+            >34. The Jack Kent Cooke Foundation College Scholarship Program</span
+          >
+        </h3>
+        <ul class="c2 lst-kix_1vyhc29712ou-0 start">
+          <li class="c4 li-bullet-0">
+            <span class="c0">Description:</span
+            ><span class="c3"
+              >&nbsp;Provides scholarships and support to high-achieving students
+              from low-income families.</span
+            >
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Eligibility:</span
+            ><span class="c3">&nbsp;High school seniors with financial need.</span>
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Application Deadline &amp; Process:</span
+            ><span class="c3"
+              >&nbsp;Apply by November. Submit online application.</span
+            >
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Contact Information:</span
+            ><span class="c3">&nbsp;(703) 723-8000, info@jkcf.org.</span>
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Website:</span
+            ><span
+              ><a
+                class="c5"
+                href="https://www.google.com/url?q=https://www.jkcf.org/&amp;sa=D&amp;source=editors&amp;ust=1721763748948858&amp;usg=AOvVaw1gxkE_nQmSQAl9yzjKxYW2"
+                >&nbsp;</a
+              ></span
+            ><span class="c8"
+              ><a
+                class="c5"
+                href="https://www.google.com/url?q=https://www.jkcf.org/&amp;sa=D&amp;source=editors&amp;ust=1721763748948997&amp;usg=AOvVaw1VKZmm_avcCA8EerUgdwSf"
+                >Jack Kent Cooke Foundation</a
+              ></span
+            >
+          </li>
+        </ul>
+        <h3 class="c1" id="h.xo8h0ca5b2c2">
+          <span class="c6 c0"
+            >35. The Davidson Institute for Talent Development</span
+          >
+        </h3>
+        <ul class="c2 lst-kix_ndnan67livrp-0 start">
+          <li class="c4 li-bullet-0">
+            <span class="c0">Description:</span
+            ><span class="c3"
+              >&nbsp;Offers support and resources for exceptionally gifted
+              students.</span
+            >
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Eligibility:</span
+            ><span class="c3">&nbsp;Gifted high school students.</span>
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Application Deadline &amp; Process:</span
+            ><span class="c3">&nbsp;Apply by spring. Submit online.</span>
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Contact Information:</span
+            ><span class="c3">&nbsp;(775) 852-3483, info@davidsongifted.org.</span>
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Website:</span
+            ><span
+              ><a
+                class="c5"
+                href="https://www.google.com/url?q=https://www.davidsongifted.org/&amp;sa=D&amp;source=editors&amp;ust=1721763748949449&amp;usg=AOvVaw3fbASvhOqleUACOIMOkB2T"
+                >&nbsp;</a
+              ></span
+            ><span class="c8"
+              ><a
+                class="c5"
+                href="https://www.google.com/url?q=https://www.davidsongifted.org/&amp;sa=D&amp;source=editors&amp;ust=1721763748949597&amp;usg=AOvVaw3nY_6t6UzkrE-6fUWOwm0v"
+                >Davidson Institute</a
+              ></span
+            >
+          </li>
+        </ul>
+        <h3 class="c1" id="h.gat3aprjy71e">
+          <span class="c6 c0"
+            >36. The National College Match Program by QuestBridge</span
+          >
+        </h3>
+        <ul class="c2 lst-kix_6f40s5txuvv-0 start">
+          <li class="c4 li-bullet-0">
+            <span class="c0">Description:</span
+            ><span class="c3"
+              >&nbsp;Connects high-achieving, low-income students with top colleges
+              through a national scholarship program.</span
+            >
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Eligibility:</span
+            ><span class="c3">&nbsp;High school juniors and seniors.</span>
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Application Deadline &amp; Process:</span
+            ><span class="c3">&nbsp;Apply by September. Submit online.</span>
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Contact Information:</span
+            ><span class="c3">&nbsp;(650) 331-3285, info@questbridge.org.</span>
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Website:</span
+            ><span
+              ><a
+                class="c5"
+                href="https://www.google.com/url?q=https://www.questbridge.org/&amp;sa=D&amp;source=editors&amp;ust=1721763748950085&amp;usg=AOvVaw3d0GWhN5SK9LOXqNtbGAzZ"
+                >&nbsp;</a
+              ></span
+            ><span class="c8"
+              ><a
+                class="c5"
+                href="https://www.google.com/url?q=https://www.questbridge.org/&amp;sa=D&amp;source=editors&amp;ust=1721763748950177&amp;usg=AOvVaw0Pp_tmTs-Eo_ONG-iTABWE"
+                >QuestBridge</a
+              ></span
+            >
+          </li>
+        </ul>
+        <h3 class="c1" id="h.jncyypnecth5">
+          <span class="c6 c0"
+            >37. The Rensselaer Polytechnic Institute (RPI) Pre-College
+            Program</span
+          >
+        </h3>
+        <ul class="c2 lst-kix_koqtizjsx38a-0 start">
+          <li class="c4 li-bullet-0">
+            <span class="c0">Description:</span
+            ><span class="c3"
+              >&nbsp;Offers summer programs in engineering and science for high
+              school students.</span
+            >
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Eligibility:</span
+            ><span class="c3">&nbsp;Rising high school juniors and seniors.</span>
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Application Deadline &amp; Process:</span
+            ><span class="c3">&nbsp;Apply by April. Submit online.</span>
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Contact Information:</span
+            ><span class="c3">&nbsp;(518) 276-6012.</span>
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Website:</span
+            ><span class="c3">&nbsp;RPI Pre-College</span>
+          </li>
+        </ul>
+        <h3 class="c1" id="h.egzur6sedihk">
+          <span class="c6 c0"
+            >38. STEM for All by The STEM Education Coalition</span
+          >
+        </h3>
+        <ul class="c2 lst-kix_8g028ylcecod-0 start">
+          <li class="c4 li-bullet-0">
+            <span class="c0">Description:</span
+            ><span class="c3"
+              >&nbsp;Provides STEM education resources and programs for high school
+              students.</span
+            >
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Eligibility:</span
+            ><span class="c3"
+              >&nbsp;High school students interested in STEM fields.</span
+            >
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Application Deadline &amp; Process:</span
+            ><span class="c3">&nbsp;Apply online.</span>
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Contact Information:</span
+            ><span class="c3">&nbsp;(202) 296-1774.</span>
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Website:</span
+            ><span
+              ><a
+                class="c5"
+                href="https://www.google.com/url?q=https://www.stemedcoalition.org/&amp;sa=D&amp;source=editors&amp;ust=1721763748951067&amp;usg=AOvVaw13QNeU__OLXb9eg4-ElE4-"
+                >&nbsp;</a
+              ></span
+            ><span class="c8"
+              ><a
+                class="c5"
+                href="https://www.google.com/url?q=https://www.stemedcoalition.org/&amp;sa=D&amp;source=editors&amp;ust=1721763748951175&amp;usg=AOvVaw1QPbt_8G0PlnHAN33D4Qjr"
+                >STEM Education Coalition</a
+              ></span
+            >
+          </li>
+        </ul>
+        <h3 class="c1" id="h.chlqyp5o5c2u">
+          <span class="c6 c0"
+            >39. The George Washington University Pre-College Program</span
+          >
+        </h3>
+        <ul class="c2 lst-kix_zftjxb7rc0yf-0 start">
+          <li class="c4 li-bullet-0">
+            <span class="c0">Description:</span
+            ><span class="c3"
+              >&nbsp;Offers college-level courses and seminars for high school
+              students.</span
+            >
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Eligibility:</span
+            ><span class="c3">&nbsp;High school juniors and seniors.</span>
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Application Deadline &amp; Process:</span
+            ><span class="c3">&nbsp;Apply by spring. Submit online.</span>
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Contact Information:</span
+            ><span class="c3">&nbsp;(202) 994-6360.</span>
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Website:</span
+            ><span class="c3">&nbsp;GWU Pre-College</span>
+          </li>
+        </ul>
+        <h3 class="c1" id="h.wir15zk88xvt">
+          <span class="c6 c0"
+            >40. The Urban Assembly&rsquo;s College Access Program</span
+          >
+        </h3>
+        <ul class="c2 lst-kix_pofodwc04bxb-0 start">
+          <li class="c4 li-bullet-0">
+            <span class="c0">Description:</span
+            ><span class="c3"
+              >&nbsp;Provides college readiness and support services for NYC
+              students.</span
+            >
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Eligibility:</span
+            ><span class="c3">&nbsp;High school students in NYC.</span>
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Application Deadline &amp; Process:</span
+            ><span class="c3"
+              >&nbsp;Apply year-round. Submit online or through school.</span
+            >
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Contact Information:</span
+            ><span class="c3">&nbsp;(212) 529-2583.</span>
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Website:</span
+            ><span
+              ><a
+                class="c5"
+                href="https://www.google.com/url?q=https://www.urbanassembly.org/&amp;sa=D&amp;source=editors&amp;ust=1721763748952066&amp;usg=AOvVaw2GscSn7-bCVy3c2UHzakHb"
+                >&nbsp;</a
+              ></span
+            ><span class="c8"
+              ><a
+                class="c5"
+                href="https://www.google.com/url?q=https://www.urbanassembly.org/&amp;sa=D&amp;source=editors&amp;ust=1721763748952188&amp;usg=AOvVaw0OJNqJpNE9eUow0GfEHtKP"
+                >Urban Assembly</a
+              ></span
+            >
+          </li>
+        </ul>
+        <h3 class="c1" id="h.mmkmav5bgkpc">
+          <span class="c6 c0">41. The Dream Big Scholarship</span>
+        </h3>
+        <ul class="c2 lst-kix_pvqrromqnm03-0 start">
+          <li class="c4 li-bullet-0">
+            <span class="c0">Description:</span
+            ><span class="c3"
+              >&nbsp;Provides scholarships for underserved students pursuing higher
+              education.</span
+            >
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Eligibility:</span
+            ><span class="c3">&nbsp;High school seniors and college students.</span>
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Application Deadline &amp; Process:</span
+            ><span class="c3">&nbsp;Apply by April. Submit online.</span>
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Contact Information:</span
+            ><span class="c3">&nbsp;(800) 123-4567.</span>
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Website:</span
+            ><span
+              ><a
+                class="c5"
+                href="https://www.google.com/url?q=http://www.dreambigscholarship.org/&amp;sa=D&amp;source=editors&amp;ust=1721763748952757&amp;usg=AOvVaw3dA5l9C4Wn82WoncXxL9Pm"
+                >&nbsp;</a
+              ></span
+            ><span class="c8"
+              ><a
+                class="c5"
+                href="https://www.google.com/url?q=http://www.dreambigscholarship.org/&amp;sa=D&amp;source=editors&amp;ust=1721763748952865&amp;usg=AOvVaw2RvoWdD1mze54aSvVFmCC2"
+                >Dream Big Scholarship</a
+              ></span
+            >
+          </li>
+        </ul>
+        <h3 class="c1" id="h.etdaz4dd312">
+          <span class="c6 c0"
+            >42. The Women in Science and Engineering (WISE) Program</span
+          >
+        </h3>
+        <ul class="c2 lst-kix_60b3p3bxeo9o-0 start">
+          <li class="c4 li-bullet-0">
+            <span class="c0">Description:</span
+            ><span class="c3"
+              >&nbsp;Offers mentorship and workshops for young women interested in
+              STEM fields.</span
+            >
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Eligibility:</span
+            ><span class="c3">&nbsp;High school girls.</span>
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Application Deadline &amp; Process:</span
+            ><span class="c3">&nbsp;Apply by spring. Submit online.</span>
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Contact Information:</span
+            ><span class="c3">&nbsp;(212) 123-4567.</span>
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Website:</span
+            ><span
+              ><a
+                class="c5"
+                href="https://www.google.com/url?q=http://www.wiseprogram.org/&amp;sa=D&amp;source=editors&amp;ust=1721763748953324&amp;usg=AOvVaw1UVl8EONWYqyaMviquC5y2"
+                >&nbsp;</a
+              ></span
+            ><span class="c8"
+              ><a
+                class="c5"
+                href="https://www.google.com/url?q=http://www.wiseprogram.org/&amp;sa=D&amp;source=editors&amp;ust=1721763748953415&amp;usg=AOvVaw3cTtRyGIkY-L0gf_nPYjTI"
+                >WISE Program</a
+              ></span
+            >
+          </li>
+        </ul>
+        <h3 class="c1" id="h.mssyk3nr1ot3">
+          <span class="c6 c0"
+            >43. The American Mathematical Society (AMS) Scholarships</span
+          >
+        </h3>
+        <ul class="c2 lst-kix_nb4yvnif1qt9-0 start">
+          <li class="c4 li-bullet-0">
+            <span class="c0">Description:</span
+            ><span class="c3"
+              >&nbsp;Provides scholarships and resources for students pursuing
+              mathematics.</span
+            >
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Eligibility:</span
+            ><span class="c3"
+              >&nbsp;High school students interested in mathematics.</span
+            >
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Application Deadline &amp; Process:</span
+            ><span class="c3">&nbsp;Apply by summer. Submit online.</span>
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Contact Information:</span
+            ><span class="c3">&nbsp;(401) 455-4000.</span>
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Website:</span
+            ><span class="c3">&nbsp;AMS Scholarships</span>
+          </li>
+        </ul>
+        <h3 class="c1" id="h.p62qh1wfppgt">
+          <span class="c6 c0"
+            >44. The Youth Leadership Program by The Center for Youth</span
+          >
+        </h3>
+        <ul class="c2 lst-kix_n3fdu7vzmnuq-0 start">
+          <li class="c4 li-bullet-0">
+            <span class="c0">Description:</span
+            ><span class="c3"
+              >&nbsp;Provides leadership training and development opportunities for
+              high school students.</span
+            >
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Eligibility:</span
+            ><span class="c3">&nbsp;NYC high school students.</span>
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Application Deadline &amp; Process:</span
+            ><span class="c3">&nbsp;Apply by summer. Submit online.</span>
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Contact Information:</span
+            ><span class="c3">&nbsp;(212) 555-6789.</span>
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Website:</span
+            ><span
+              ><a
+                class="c5"
+                href="https://www.google.com/url?q=http://www.centeryouth.org/&amp;sa=D&amp;source=editors&amp;ust=1721763748954204&amp;usg=AOvVaw2WpJvWlSxBvd6R5wtiR_sG"
+                >&nbsp;</a
+              ></span
+            ><span class="c8"
+              ><a
+                class="c5"
+                href="https://www.google.com/url?q=http://www.centeryouth.org/&amp;sa=D&amp;source=editors&amp;ust=1721763748954294&amp;usg=AOvVaw1kMPsj1Bgjya0RCqDRQk1Z"
+                >Center for Youth</a
+              ></span
+            >
+          </li>
+        </ul>
+        <h3 class="c1" id="h.hx42ciyu4sw9">
+          <span class="c6 c0"
+            >45. The New York State Science and Engineering Fair</span
+          >
+        </h3>
+        <ul class="c2 lst-kix_bddowk7x2618-0 start">
+          <li class="c4 li-bullet-0">
+            <span class="c0">Description:</span
+            ><span class="c3"
+              >&nbsp;An annual science fair offering awards and recognition for
+              student research projects.</span
+            >
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Eligibility:</span
+            ><span class="c3">&nbsp;High school students in New York State.</span>
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Application Deadline &amp; Process:</span
+            ><span class="c3"
+              >&nbsp;Apply by January. Submit project details online.</span
+            >
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Contact Information:</span
+            ><span class="c3">&nbsp;(518) 555-1234.</span>
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Website:</span
+            ><span
+              ><a
+                class="c5"
+                href="https://www.google.com/url?q=http://www.nyssef.org/&amp;sa=D&amp;source=editors&amp;ust=1721763748954886&amp;usg=AOvVaw3dxWLdLY90nhD_gvAKRAdS"
+                >&nbsp;</a
+              ></span
+            ><span class="c8"
+              ><a
+                class="c5"
+                href="https://www.google.com/url?q=http://www.nyssef.org/&amp;sa=D&amp;source=editors&amp;ust=1721763748954989&amp;usg=AOvVaw2Udy_-MwCD2aPCYO69S2IF"
+                >NY Science and Engineering Fair</a
+              ></span
+            >
+          </li>
+        </ul>
+        <h3 class="c1" id="h.mkf0tjy8wlf9">
+          <span class="c6 c0"
+            >46. The Metropolitan Museum of Art&rsquo;s Teen Programs</span
+          >
+        </h3>
+        <ul class="c2 lst-kix_tv59168v42mt-0 start">
+          <li class="c4 li-bullet-0">
+            <span class="c0">Description:</span
+            ><span class="c3"
+              >&nbsp;Offers art-related workshops, internships, and educational
+              programs for high school students.</span
+            >
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Eligibility:</span
+            ><span class="c3">&nbsp;NYC high school students.</span>
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Application Deadline &amp; Process:</span
+            ><span class="c3">&nbsp;Apply in the spring. Submit online.</span>
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Contact Information:</span
+            ><span class="c3">&nbsp;(212) 535-7710.</span>
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Website:</span
+            ><span class="c3">&nbsp;Met Museum Teen Programs</span>
+          </li>
+        </ul>
+        <h3 class="c1" id="h.7xfyoiudhqdr">
+          <span class="c6 c0"
+            >47. The New York City Department of Youth and Community Development
+            (DYCD) Summer Youth Employment Program</span
+          >
+        </h3>
+        <ul class="c2 lst-kix_qhfu37a4h4jy-0 start">
+          <li class="c4 li-bullet-0">
+            <span class="c0">Description:</span
+            ><span class="c3"
+              >&nbsp;Provides summer job opportunities and internships for
+              youth.</span
+            >
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Eligibility:</span
+            ><span class="c3">&nbsp;NYC high school students aged 14-24.</span>
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Application Deadline &amp; Process:</span
+            ><span class="c3"
+              >&nbsp;Apply by April. Submit online through DYCD website.</span
+            >
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Contact Information:</span
+            ><span class="c3">&nbsp;(212) 676-9421.</span>
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Website:</span
+            ><span class="c3"
+              >&nbsp;[DYCD Summer Youth Employment](https://www</span
+            >
+          </li>
+        </ul>
+        <h3 class="c1" id="h.dncuymhqp5wd">
+          <span class="c6 c0">48. The Youth Arts Academy</span>
+        </h3>
+        <ul class="c2 lst-kix_ilo379u8ow44-0 start">
+          <li class="c4 li-bullet-0">
+            <span class="c0">Description:</span
+            ><span class="c3"
+              >&nbsp;Offers arts education and mentorship for high school
+              students.</span
+            >
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Eligibility:</span
+            ><span class="c3"
+              >&nbsp;High school students interested in the arts.</span
+            >
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Application Deadline &amp; Process:</span
+            ><span class="c3"
+              >&nbsp;Apply in the spring. Submit online application.</span
+            >
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Contact Information:</span
+            ><span class="c3">&nbsp;(212) 555-7890.</span>
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Website:</span
+            ><span
+              ><a
+                class="c5"
+                href="https://www.google.com/url?q=http://www.youthartsacademy.org/&amp;sa=D&amp;source=editors&amp;ust=1721763748956197&amp;usg=AOvVaw0kDFuCpP4bpDNE00Imtb_B"
+                >&nbsp;</a
+              ></span
+            ><span class="c8"
+              ><a
+                class="c5"
+                href="https://www.google.com/url?q=http://www.youthartsacademy.org/&amp;sa=D&amp;source=editors&amp;ust=1721763748956303&amp;usg=AOvVaw2p3RKYU_pfgdSTGPqzR1KY"
+                >Youth Arts Academy</a
+              ></span
+            >
+          </li>
+        </ul>
+        <h3 class="c1" id="h.erme8r7odpf">
+          <span class="c6 c0">49. The New York City Youth Opportunities Fund</span>
+        </h3>
+        <ul class="c2 lst-kix_z9bch0gachcn-0 start">
+          <li class="c4 li-bullet-0">
+            <span class="c0">Description:</span
+            ><span class="c3"
+              >&nbsp;Provides grants and funding for youth programs and
+              projects.</span
+            >
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Eligibility:</span
+            ><span class="c3"
+              >&nbsp;High school students involved in community projects.</span
+            >
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Application Deadline &amp; Process:</span
+            ><span class="c3"
+              >&nbsp;Apply by summer. Submit through local community
+              organizations.</span
+            >
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Contact Information:</span
+            ><span class="c3">&nbsp;(212) 555-2345.</span>
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Website:</span
+            ><span class="c3">&nbsp;NYC Youth Opportunities Fund</span>
+          </li>
+        </ul>
+        <h3 class="c1" id="h.9s3rnjld03pd">
+          <span class="c6 c0">50. The Lower East Side Girls Club</span>
+        </h3>
+        <ul class="c2 lst-kix_thyecatyl4oj-0 start">
+          <li class="c4 li-bullet-0">
+            <span class="c0">Description:</span
+            ><span class="c3"
+              >&nbsp;Offers educational programs, career readiness, and leadership
+              training for young women.</span
+            >
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Eligibility:</span
+            ><span class="c3">&nbsp;Female high school students in NYC.</span>
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Application Deadline &amp; Process:</span
+            ><span class="c3">&nbsp;Rolling admissions. Apply online.</span>
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Contact Information:</span
+            ><span class="c3">&nbsp;(212) 673-1800.</span>
+          </li>
+          <li class="c4 li-bullet-0">
+            <span class="c0">Website:</span
+            ><span
+              ><a
+                class="c5"
+                href="https://www.google.com/url?q=https://www.girlsclub.org/&amp;sa=D&amp;source=editors&amp;ust=1721763748957231&amp;usg=AOvVaw11L5FW4kTBExseGUv9a0kK"
+                >&nbsp;</a
+              ></span
+            ><span class="c8"
+              ><a
+                class="c5"
+                href="https://www.google.com/url?q=https://www.girlsclub.org/&amp;sa=D&amp;source=editors&amp;ust=1721763748957332&amp;usg=AOvVaw3J9AJv7xWGvbMum82vVBZy"
+                >Lower East Side Girls Club</a
+              ></span
+            >
+          </li>
+        </ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; S.U.R.E. - Serving Under Resourced Education. All rights reserved.</p>
+  </footer>
+
+  <!-- Chat Modal -->
+  <div id="chatModal" class="chat-modal">
+    <div class="chat-modal-header">
+      <h3>Chat with Us!</h3>
+      <button class="close-chat" onclick="closeChat()">X</button>
+    </div>
+    <div class="chat-modal-body">
+      <!-- Previous messages will be displayed here -->
+    </div>
+    <div class="chat-modal-footer">
+      <input type="text" id="chatInput" class="chat-input" placeholder="Type a message...">
+      <button id="send-button" onclick="sendMessage()" class="send-button">Send</button>
+    </div>
+  </div>
+</body>
+</html>

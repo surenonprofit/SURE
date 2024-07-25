@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="S.U.R.E - Serving Under Resourced Education, empowering minority students with AI tutoring, educational resources, and networking opportunities.">
+  <meta name="keywords" content="S.U.R.E, education, minority students, AI tutoring, networking, NYC, college readiness">
+  <title>S.U.R.E - Serving Under Resourced Education</title>
+  <link rel="stylesheet" href="/static/styles/style.css">
+  <script src="/static/scripts/script.js"></script>
+</head>
+<body>
+  <header>
+    <a href="homepage.html">
+      <img src="/static/images/SURE.png" alt="S.U.R.E Logo">
+    </a>
+  </header>
+
+  <nav>
+    <a href="/" title="Learn about SURE">Homepage</a>
+    <a href="/api/resources_page" title="Explore our resources">Information Database</a>
+    <a href="/involve" title="Find out how to get involved">Get Involved</a>
+    <button onclick="openChat()" title="Chat with us!">Sure-Bot</button>
+  </nav>
+
+  <main>
+    <section id="Mentoring Program">
+      <h2>SURE Mentoring Opportunity</h2>
+      <p> SURE's mentoring program provides college students in New York the opportunity to mentor SURE users.</p>
+        <br>Some great benefits to SURE mentoring</br>
+          <br>College Credits</br>
+          <br>Build your resume</br>
+          <br>Improved leadership and communication skills</br>
+          <br>Contribute to the growth of your community</br>
+          <p><a href="https://forms.gle/ZeAcCk8VDvEbHxFs7" target="_blank">Apply Here!</a></p>
+    </section>
+
+    <section id="Donations">
+      <h2>Donations</h2>
+      <p>SURE is a nonprofit with the goal to empower underresourced students in New York City, but our operation is costly. All donations go toward providing essential resources and support to underresourced communities, empowering our users to build a brighter future. Your contribution ensures that we can continue our mission of creating sustainable and impactful change in the lives of those who need it most.
+      </p>
+      <p>Donations: (add)</p>
+    </section>
+
+    <section id="Contact Us">
+      <h2>Contact Us!</h2>
+      <p>Phone Number: 914-696-5108</p>
+      <p>Email: surenonprofit@gmail.com</p>
+      <p>Instagram: @surenonprofit</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; S.U.R.E. - Serving Under Resourced Education. All rights reserved.</p>
+  </footer>
+
+  <!-- Chat Modal -->
+  <div id="chatModal" class="chat-modal">
+    <div class="chat-modal-header">
+      <h3>Chat with Us!</h3>
+      <button class="close-chat" onclick="closeChat()">X</button>
+    </div>
+    <div class="chat-modal-body">
+      <!-- Previous messages will be displayed here -->
+    </div>
+    <div class="chat-modal-footer">
+      <input type="text" id="chatInput" class="chat-input" placeholder="Type a message...">
+      <button id="send-button" onclick="sendMessage()" class="send-button">Send</button>
+    </div>
+  </div>
+</body>
+</html>
