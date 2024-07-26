@@ -1,0 +1,71 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="S.U.R.E - Serving Under Resourced Education, empowering minority students with AI tutoring, educational resources, and networking opportunities.">
+  <meta name="keywords" content="S.U.R.E, education, minority students, AI tutoring, networking, NYC, college readiness">
+  <title>S.U.R.E - Serving Under Resourced Education</title>
+  <link rel="stylesheet" href="/static/styles/style.css">
+  <script src="/static/scripts/script.js"></script>
+</head>
+<body>
+  <header>
+    <a href="/">
+      <img src="/static/images/SURE.png" alt="S.U.R.E Logo">
+    </a>
+  </header>
+
+  <nav>
+    <a href="/" title="Learn about SURE">Homepage</a>
+    <a href="/api/resources_page" title="Explore our resources">Information Database</a>
+    <a href="/involve" title="Find out how to get involved">Get Involved</a>
+    <button onclick="openChat()" title="Chat with us!">Sure-Bot</button>
+  </nav>
+
+  <main>
+    <section id="about-us">
+      <h2>About Us</h2>
+      <p>S.U.R.E. is dedicated to empowering minority students in underserved communities by providing access to AI tutoring, networking opportunities, educational resources, and connections with extracurricular activities and college readiness coaches.</p>
+      <p>We partner with public schools in the NYC area to pair high school students with knowledgeable mentors that have high experience to provide access to networking opportunities, educational resources, and connections with extracurricular activities and college readiness coaches.</p>
+    </section>
+    <section id="article">
+      <h2>Meet SURE Founders!</h2>
+      <article class="article">
+        <h3>Meet SURE Founders!</h3>
+        <img src="https://via.placeholder.com/800x400" alt="Fish image">
+        <p>
+          <p>Inception and Vision</p>
+          S.U.R.E. (Serving Under Resourced Education) was established with a mission to uplift minority students in underserved communities. Founders Mahid Shams, Ezequiel Martinez, Elmary Rodriguez, and Martina Adogli are all students residing in New York City, and coming from public and charter schools recognized the lack of resources available to students. Now attending private schools, they were able to gain connections with others, and build their network. Being able to begin their networking journey allowed them to recognize the privilege they have, but they have access to resources that should be available to all students, despite what schools they attend. They wanted a way for their users to gain and grow their network through educational resources and networking opportunities. As the organization grew, it became evident that a strong online presence was crucial to reach and support more students effectively. The idea of developing a website emerged as a natural step in amplifying S.U.R.E.'s impact.
+          
+          <p>Planning and Design</p>
+          In the early stages, the S.U.R.E. founders began to outline the objectives of their website. They envisioned a simple and user-friendly platform that would not only provide information about their programs such as mentoring and how to get access to those mentors, but also facilitate interactive engagement through features like AI chatbots and resource databases. The design had to reflect the organization's commitment to inclusivity and accessibility, with their site being accessible in different languages.
+          
+          
+          <p>Ongoing Evolution</p>
+          As S.U.R.E. continues to grow and evolve, the website remains a dynamic part of their strategy. Regular updates and enhancements are made to ensure that the site meets the changing needs of the community it serves. The goal is to keep expanding the features and resources available, further strengthening the support system for minority students.
+          </p>
+      </article>
+    </section>
+  </main>
+  <footer>
+    <p>&copy; S.U.R.E. - Serving Under Resourced Education. All rights reserved.</p>
+  </footer>
+
+  <!-- Chat Modal -->
+  <div id="chatModal" class="chat-modal">
+    <div class="chat-modal-header">
+      <h3>Chat with Us!</h3>
+      <button class="close-chat" onclick="closeChat()">X</button>
+    </div>
+    <div class="chat-modal-body">
+      <!-- Previous messages will be displayed here -->
+    </div>
+    <div class="chat-modal-footer">
+      <input type="text" id="chatInput" class="chat-input" placeholder="Type a message...">
+      <button id="send-button" onclick="sendMessage()" class="send-button">Send</button>
+    </div>
+  </div>
+</body>
+</html>
